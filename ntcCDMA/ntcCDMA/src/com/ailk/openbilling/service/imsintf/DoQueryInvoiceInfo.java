@@ -1,0 +1,87 @@
+
+package com.ailk.openbilling.service.imsintf;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Java class for do_queryInvoiceInfo complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="do_queryInvoiceInfo">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="sOper" type="{http://imsintf.service.openbilling.ailk.com/}sOperInfo" minOccurs="0"/>
+ *         &lt;element name="sQueryInvoiceInfoReq" type="{http://imsintf.service.openbilling.ailk.com/}sQueryInvoiceInfoReq" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "do_queryInvoiceInfo", propOrder = {
+    "sOper",
+    "sQueryInvoiceInfoReq"
+})
+public class DoQueryInvoiceInfo {
+
+    protected SOperInfo sOper;
+    protected SQueryInvoiceInfoReq sQueryInvoiceInfoReq;
+
+    /**
+     * Gets the value of the sOper property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SOperInfo }
+     *     
+     */
+    public SOperInfo getSOper() {
+        return sOper;
+    }
+
+    /**
+     * Sets the value of the sOper property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SOperInfo }
+     *     
+     */
+    public void setSOper(SOperInfo value) {
+        this.sOper = value;
+    }
+
+    /**
+     * Gets the value of the sQueryInvoiceInfoReq property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SQueryInvoiceInfoReq }
+     *     
+     */
+    public SQueryInvoiceInfoReq getSQueryInvoiceInfoReq() {
+        return sQueryInvoiceInfoReq;
+    }
+
+    /**
+     * Sets the value of the sQueryInvoiceInfoReq property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SQueryInvoiceInfoReq }
+     *     
+     */
+    public void setSQueryInvoiceInfoReq(SQueryInvoiceInfoReq value) {
+        this.sQueryInvoiceInfoReq = value;
+    }
+
+}

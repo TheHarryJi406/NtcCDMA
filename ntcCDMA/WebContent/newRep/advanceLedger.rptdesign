@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 3.7.2.v20120213 Build &lt;3.7.2.v20120214-1408></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="AccId" id="520">
+            <text-property name="promptText">Account Id</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="fromDate" id="522">
+            <text-property name="promptText">From Date(yyyy/mm/dd)</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="toDate" id="521">
+            <text-property name="promptText">To Date(yyyy/mm/dd)</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="userId" id="547">
+            <text-property name="promptText">Enter User Id</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="7">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">oracle.jdbc.driver.OracleDriver</property>
+            <property name="odaURL">jdbc:oracle:thin:lccibs/lccibs321@//192.168.117.6:1521/billtestdb</property>
+            <property name="odaUser">lccibs</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">bGNjaWJzMzIx</encrypted-property>
+            <property name="OdaConnProfileName">Data Source_2</property>
+            <property name="OdaConnProfileStorePath">ntcConnectionProfile</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="9">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">BALANCE</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">RUNNINGSUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value">if (row["ROWNUM"]==1){row["DR_AMT"]-row["CR_AMT"]+row["OPENING"]}else{row["DR_AMT"]-row["CR_AMT"]}</expression>
+                        </structure>
+                    </list-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">param_1</property>
+                    <property name="paramName">fromDate</property>
+                    <property name="dataType">string</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue" type="constant">14-aug-12</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">param_2</property>
+                    <property name="paramName">AccId</property>
+                    <property name="dataType">string</property>
+                    <property name="position">2</property>
+                    <expression name="defaultValue" type="constant">12345</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">param_3</property>
+                    <property name="paramName">fromDate</property>
+                    <property name="dataType">string</property>
+                    <property name="position">3</property>
+                    <expression name="defaultValue" type="constant">14-aug-12</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">param_4</property>
+                    <property name="paramName">toDate</property>
+                    <property name="dataType">string</property>
+                    <property name="position">4</property>
+                    <expression name="defaultValue" type="constant">19-aug-12</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">ROWNUM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">ACCT_ID</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">SRV_NO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">TRANS_FROM</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">TRANS_DT</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">DR_AMT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">CR_AMT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">REF_IBS_TRANS_NO</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">RECEIVED_BY</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">CUST_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">CUSTOMERCATEGORYCD</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">CONTACTNO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">BILLGROUPID</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">STARTDATE</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">STOPDATE</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">STATUS</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">OPENING</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">BALANCE</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">ROWNUM</property>
+                    <property name="nativeName">ROWNUM</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">ACCT_ID</property>
+                    <property name="nativeName">ACCT_ID</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">SRV_NO</property>
+                    <property name="nativeName">SRV_NO</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">TRANS_FROM</property>
+                    <property name="nativeName">TRANS_FROM</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">TRANS_DT</property>
+                    <property name="nativeName">TRANS_DT</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">DR_AMT</property>
+                    <property name="nativeName">DR_AMT</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">CR_AMT</property>
+                    <property name="nativeName">CR_AMT</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">REF_IBS_TRANS_NO</property>
+                    <property name="nativeName">REF_IBS_TRANS_NO</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">RECEIVED_BY</property>
+                    <property name="nativeName">RECEIVED_BY</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">CUST_NAME</property>
+                    <property name="nativeName">CUST_NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">CUSTOMERCATEGORYCD</property>
+                    <property name="nativeName">CUSTOMERCATEGORYCD</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">CONTACTNO</property>
+                    <property name="nativeName">CONTACTNO</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">BILLGROUPID</property>
+                    <property name="nativeName">BILLGROUPID</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">STARTDATE</property>
+                    <property name="nativeName">STARTDATE</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">STOPDATE</property>
+                    <property name="nativeName">STOPDATE</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">STATUS</property>
+                    <property name="nativeName">STATUS</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">OPENING</property>
+                    <property name="nativeName">OPENING</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT rownum, e.acct_id, e.srv_no, e.trans_from,cmmn1.to_bs(e.trans_dt) trans_dt , e.dr_amt, e.cr_amt, e.ref_ibs_trans_no, 
+e.received_by, a.firstname||' '||a.middlename||' '||a.lastname cust_name,
+a.customercategorycd, a.contactno, a.billgroupid, a.startdate,
+   a.stopdate, a.status,(SELECT nvl(SUM(NVL(dr_amt,0)-NVL(cr_amt,0)),0)
+                         FROM lcc_ledger_dat WHERE acct_id=e.acct_id 
+                         AND main_trans_type='ADV'
+                         AND trans_dt < cmmn1.to_ad(?)) as opening
+FROM lcc_ledger_dat e, u6test.cc_account a
+WHERE acct_id=?
+AND main_trans_type='ADV'
+AND trans_dt BETWEEN cmmn1.to_ad(?) AND cmmn1.to_ad(?)
+AND e.acct_id=a.accountno
+ORDER bY rownum,trans_dt,create_dt,trans_no]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>ACCT_ID</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
+            <design:precision>9</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>ACCT_ID</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>ACCT_ID</design:label>
+            <design:formattingHints>
+              <design:displaySize>22</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>SRV_NO</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>60</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>SRV_NO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>SRV_NO</design:label>
+            <design:formattingHints>
+              <design:displaySize>60</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>TRANS_FROM</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>TRANS_FROM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>TRANS_FROM</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>TRANS_DT</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>0</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>TRANS_DT</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>TRANS_DT</design:label>
+            <design:formattingHints>
+              <design:displaySize>7</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DR_AMT</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
+            <design:precision>12</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DR_AMT</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DR_AMT</design:label>
+            <design:formattingHints>
+              <design:displaySize>22</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CR_AMT</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
+            <design:precision>12</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CR_AMT</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CR_AMT</design:label>
+            <design:formattingHints>
+              <design:displaySize>22</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>REF_IBS_TRANS_NO</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
+            <design:precision>20</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>REF_IBS_TRANS_NO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>REF_IBS_TRANS_NO</design:label>
+            <design:formattingHints>
+              <design:displaySize>22</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>RECEIVED_BY</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>30</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>RECEIVED_BY</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>RECEIVED_BY</design:label>
+            <design:formattingHints>
+              <design:displaySize>30</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="CurrentDate" id="549">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">CURRENT_DATE</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">CURRENT_DATE</text-property>
+                    <text-property name="heading">CURRENT_DATE</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">CURRENT_DATE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">CURRENT_DATE</property>
+                    <property name="nativeName">CURRENT_DATE</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select cmmn1.to_bs(sysdate) current_date from dual]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="579">
+            <property name="borderBottomColor">#000000</property>
+            <property name="borderBottomStyle">double</property>
+            <property name="borderBottomWidth">10px</property>
+            <property name="width">7.947916666666667in</property>
+            <column id="580">
+                <property name="width">0.8333333333333334in</property>
+            </column>
+            <column id="581">
+                <property name="width">2.3541666666666665in</property>
+            </column>
+            <column id="582">
+                <property name="width">1.59375in</property>
+            </column>
+            <column id="583">
+                <property name="width">1.5833333333333333in</property>
+            </column>
+            <column id="584">
+                <property name="width">1.5833333333333333in</property>
+            </column>
+            <row id="585">
+                <cell id="586">
+                    <property name="colSpan">5</property>
+                    <property name="rowSpan">1</property>
+                    <label id="587">
+                        <property name="fontSize">12pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">Nepal Telecom </text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="588">
+                <cell id="589">
+                    <property name="colSpan">5</property>
+                    <property name="rowSpan">1</property>
+                    <label id="590">
+                        <property name="fontWeight">bold</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">IBS System</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="591">
+                <cell id="592">
+                    <property name="colSpan">5</property>
+                    <property name="rowSpan">1</property>
+                    <label id="523">
+                        <property name="fontWeight">bold</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text"> Advance Ledger</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="593">
+                <cell id="594">
+                    <label id="595">
+                        <property name="fontWeight">bold</property>
+                        <text-property name="text">User Id:</text-property>
+                    </label>
+                </cell>
+                <cell id="596">
+                    <data id="758">
+                        <property name="fontWeight">bold</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">userId</property>
+                                <expression name="expression" type="javascript">params["userId"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">userId</property>
+                    </data>
+                </cell>
+                <cell id="759"/>
+                <cell id="760">
+                    <label id="761">
+                        <property name="fontWeight">bold</property>
+                        <property name="textAlign">right</property>
+                        <text-property name="text">Date :</text-property>
+                    </label>
+                </cell>
+                <cell id="762">
+                    <data id="757">
+                        <property name="fontWeight">bold</property>
+                        <property name="dataSet">CurrentDate</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">CURRENT_DATE</property>
+                                <text-property name="displayName">CURRENT_DATE</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["CURRENT_DATE"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">CURRENT_DATE</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="763">
+                <cell id="764"/>
+                <cell id="765"/>
+                <cell id="766"/>
+                <cell id="767"/>
+                <cell id="768"/>
+            </row>
+        </grid>
+        <table id="10">
+            <property name="width">7.947916666666667in</property>
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">ACCT_ID</property>
+                    <text-property name="displayName">ACCT_ID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["ACCT_ID"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">SRV_NO</property>
+                    <text-property name="displayName">SRV_NO</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["SRV_NO"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">TRANS_FROM</property>
+                    <text-property name="displayName">TRANS_FROM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["TRANS_FROM"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">TRANS_DT</property>
+                    <text-property name="displayName">TRANS_DT</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["TRANS_DT"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">DR_AMT</property>
+                    <text-property name="displayName">DR_AMT</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["DR_AMT"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">CR_AMT</property>
+                    <text-property name="displayName">CR_AMT</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["CR_AMT"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">REF_IBS_TRANS_NO</property>
+                    <text-property name="displayName">REF_IBS_TRANS_NO</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["REF_IBS_TRANS_NO"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">RECEIVED_BY</property>
+                    <text-property name="displayName">RECEIVED_BY</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["RECEIVED_BY"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">CUST_NAME</property>
+                    <text-property name="displayName">CUST_NAME</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["CUST_NAME"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">CUSTOMERCATEGORYCD</property>
+                    <text-property name="displayName">CUSTOMERCATEGORYCD</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["CUSTOMERCATEGORYCD"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">OPENING</property>
+                    <text-property name="displayName">OPENING</text-property>
+                    <expression name="expression" type="javascript">if(dataSetRow["OPENING"]!=null){0}</expression>
+                    <property name="dataType">decimal</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">BALANCE</property>
+                    <text-property name="displayName">BALANCE</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["BALANCE"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+            </list-property>
+            <column id="54">
+                <property name="width">1in</property>
+            </column>
+            <column id="55">
+                <property name="width">0.8229166666666666in</property>
+            </column>
+            <column id="56">
+                <property name="width">0.8125in</property>
+            </column>
+            <column id="57">
+                <property name="width">0.7916666666666666in</property>
+            </column>
+            <column id="58">
+                <property name="width">0.75in</property>
+            </column>
+            <column id="59">
+                <property name="width">0.9583333333333334in</property>
+            </column>
+            <column id="60">
+                <property name="width">1.34375in</property>
+            </column>
+            <column id="61">
+                <property name="width">1.46875in</property>
+            </column>
+            <header>
+                <row id="62">
+                    <cell id="63">
+                        <label id="13">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Accont Id:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="64">
+                        <data id="30">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">ACCT_ID</property>
+                        </data>
+                    </cell>
+                    <cell id="65"/>
+                    <cell id="66"/>
+                    <cell id="67"/>
+                    <cell id="68"/>
+                    <cell id="69"/>
+                    <cell id="70"/>
+                </row>
+                <row id="524">
+                    <cell id="525">
+                        <label id="73">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Name:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="526">
+                        <property name="colSpan">3</property>
+                        <property name="rowSpan">1</property>
+                        <data id="71">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">CUST_NAME</property>
+                        </data>
+                    </cell>
+                    <cell id="529">
+                        <label id="74">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Category:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="530">
+                        <data id="72">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">CUSTOMERCATEGORYCD</property>
+                        </data>
+                    </cell>
+                    <cell id="531">
+                        <label id="519">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Opening:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="532">
+                        <data id="75">
+                            <property name="fontWeight">bold</property>
+                            <structure name="numberFormat">
+                                <property name="category">Currency</property>
+                                <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">OPENING</property>
+                        </data>
+                    </cell>
+                </row>
+                <row id="533">
+                    <property name="borderBottomColor">#000000</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <cell id="534">
+                        <label id="542">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">From Date:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="535">
+                        <data id="544">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">fromDate</property>
+                                    <expression name="expression" type="javascript">params["fromDate"]</expression>
+                                    <property name="dataType">string</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">fromDate</property>
+                        </data>
+                    </cell>
+                    <cell id="536">
+                        <label id="543">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">right</property>
+                            <text-property name="text">To Date:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="537">
+                        <data id="545">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">toDate</property>
+                                    <expression name="expression" type="javascript">params["toDate"]</expression>
+                                    <property name="dataType">string</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">toDate</property>
+                        </data>
+                    </cell>
+                    <cell id="538"/>
+                    <cell id="539"/>
+                    <cell id="540"/>
+                    <cell id="541"/>
+                </row>
+                <row id="11">
+                    <property name="backgroundColor">#808080</property>
+                    <cell id="12">
+                        <label id="15">
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Service No.</text-property>
+                        </label>
+                    </cell>
+                    <cell id="14">
+                        <label id="19">
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Trans Date</text-property>
+                        </label>
+                    </cell>
+                    <cell id="16">
+                        <label id="17">
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Trans Form</text-property>
+                        </label>
+                    </cell>
+                    <cell id="18">
+                        <label id="21">
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Dr Amount</text-property>
+                        </label>
+                    </cell>
+                    <cell id="20">
+                        <label id="23">
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Cr Amount</text-property>
+                        </label>
+                    </cell>
+                    <cell id="22">
+                        <label id="78">
+                            <property name="textAlign">right</property>
+                            <text-property name="text">BALANCE</text-property>
+                        </label>
+                    </cell>
+                    <cell id="24">
+                        <label id="25">
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Ref IBS Trans</text-property>
+                        </label>
+                    </cell>
+                    <cell id="26">
+                        <label id="27">
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Received By</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="28">
+                    <cell id="29">
+                        <data id="32">
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">SRV_NO</property>
+                        </data>
+                    </cell>
+                    <cell id="31">
+                        <data id="36">
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">TRANS_DT</property>
+                        </data>
+                    </cell>
+                    <cell id="33">
+                        <data id="34">
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">TRANS_FROM</property>
+                        </data>
+                    </cell>
+                    <cell id="35">
+                        <data id="38">
+                            <structure name="numberFormat">
+                                <property name="category">Currency</property>
+                                <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">DR_AMT</property>
+                        </data>
+                    </cell>
+                    <cell id="37">
+                        <data id="40">
+                            <structure name="numberFormat">
+                                <property name="category">Currency</property>
+                                <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">CR_AMT</property>
+                        </data>
+                    </cell>
+                    <cell id="39">
+                        <data id="77">
+                            <structure name="numberFormat">
+                                <property name="category">Currency</property>
+                                <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">BALANCE</property>
+                        </data>
+                    </cell>
+                    <cell id="41">
+                        <data id="42">
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">REF_IBS_TRANS_NO</property>
+                        </data>
+                    </cell>
+                    <cell id="43">
+                        <data id="44">
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">RECEIVED_BY</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="45">
+                    <cell id="46"/>
+                    <cell id="47"/>
+                    <cell id="48"/>
+                    <cell id="49"/>
+                    <cell id="50"/>
+                    <cell id="51"/>
+                    <cell id="52"/>
+                    <cell id="53"/>
+                </row>
+            </footer>
+        </table>
+        <grid id="562">
+            <property name="height">0.5833333333333334in</property>
+            <property name="width">7.947916666666667in</property>
+            <column id="563">
+                <property name="width">1.1875in</property>
+            </column>
+            <column id="564">
+                <property name="width">4.114583333333333in</property>
+            </column>
+            <column id="565">
+                <property name="width">2.6458333333333335in</property>
+            </column>
+            <row id="566">
+                <property name="height">0.14583333333333334in</property>
+                <cell id="567"/>
+                <cell id="568"/>
+                <cell id="569"/>
+            </row>
+            <row id="570">
+                <cell id="571">
+                    <label id="572">
+                        <property name="fontWeight">bold</property>
+                        <text-property name="text">Prepared By</text-property>
+                    </label>
+                </cell>
+                <cell id="573">
+                    <data id="548">
+                        <property name="fontWeight">bold</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">userId</property>
+                                <expression name="expression" type="javascript">params["userId"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">userId</property>
+                    </data>
+                </cell>
+                <cell id="574"/>
+            </row>
+            <row id="575">
+                <cell id="576"/>
+                <cell id="577"/>
+                <cell id="578"/>
+            </row>
+        </grid>
+    </body>
+</report>

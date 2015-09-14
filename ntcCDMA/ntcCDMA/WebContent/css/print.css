@@ -1,0 +1,27 @@
+* {
+	font-size: 11px;
+	font-family: Verdana;
+}
+.noprint {
+	display: none;
+}
+
+input {
+	border: 0px;
+}
+
+h2, h3 {
+	text-align: center;
+}
+h4 {
+	text-align: right;
+	}
+
+table.color tr td {
+	border: 1px solid gray;
+}
+
+#go 
+{display: none;}
+#log 
+{display: none;}

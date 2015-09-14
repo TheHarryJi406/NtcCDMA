@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__collCen_460_0</property>
+            <property name="value">C0001</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__fromDate_458_1</property>
+            <property name="value">01-mar-12</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__toDate_459_2</property>
+            <property name="value">21-aug-12</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__user_463_3</property>
+            <property name="value">U00002</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__accCen_461_4</property>
+            <property name="value">AC001</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__region_462_5</property>
+            <property name="value">R0003</property>
+        </structure>
+        <structure>
+            <property name="name">region_462_6</property>
+            <property name="value">R0003</property>
+        </structure>
+        <structure>
+            <property name="name">region_462_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">collCen_460_7</property>
+            <property name="value">C0001</property>
+        </structure>
+        <structure>
+            <property name="name">collCen_460_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">fromDate_458_8</property>
+            <property name="value">01-mar-12</property>
+        </structure>
+        <structure>
+            <property name="name">fromDate_458_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">toDate_459_9</property>
+            <property name="value">21-aug-12</property>
+        </structure>
+        <structure>
+            <property name="name">toDate_459_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">user_463_10</property>
+            <property name="value">U00002</property>
+        </structure>
+        <structure>
+            <property name="name">user_463_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">accCen_461_11</property>
+            <property name="value">AC001</property>
+        </structure>
+        <structure>
+            <property name="name">accCen_461_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

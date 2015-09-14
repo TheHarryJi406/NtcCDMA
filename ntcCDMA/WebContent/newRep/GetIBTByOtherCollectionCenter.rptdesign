@@ -1,0 +1,1157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 3.7.2.v20120213 Build &lt;3.7.2.v20120214-1408></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="transType" id="1132">
+            <text-property name="promptText">Enter Transaction Type</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList">
+                <structure>
+                    <property name="value">ADV </property>
+                    <property name="label">Advance</property>
+                </structure>
+                <structure>
+                    <property name="value">DEP</property>
+                    <property name="label">Deposit</property>
+                </structure>
+                <structure>
+                    <property name="value">DEB</property>
+                    <property name="label">Debtor</property>
+                </structure>
+            </list-property>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="fromDate" id="522">
+            <text-property name="promptText">From Date(yyyy/mm/dd)</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="toDate" id="521">
+            <text-property name="promptText">To Date(yyyy/mm/dd)</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="accCen" id="1133">
+            <text-property name="promptText">Enter Account Center</text-property>
+            <property name="valueType">dynamic</property>
+            <property name="dataSetName">Data Set2</property>
+            <expression name="valueExpr" type="javascript">dataSetRow["ACC_CEN_CODE"]</expression>
+            <expression name="labelExpr" type="javascript">dataSetRow["DESCRIPTION"]</expression>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="userId" id="547">
+            <text-property name="promptText">Enter User Id</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="7">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">oracle.jdbc.driver.OracleDriver</property>
+            <property name="odaURL">jdbc:oracle:thin:lccibs/lccibs321@//192.168.117.6:1521/billtestdb</property>
+            <property name="odaUser">lccibs</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">bGNjaWJzMzIx</encrypted-property>
+            <property name="OdaConnProfileName">Data Source_2</property>
+            <property name="OdaConnProfileStorePath">ntcConnectionProfile</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set1" id="1187">
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">transType</property>
+                    <property name="paramName">transType</property>
+                    <property name="dataType">string</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">fromDate</property>
+                    <property name="paramName">fromDate</property>
+                    <property name="dataType">string</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">toDate</property>
+                    <property name="paramName">toDate</property>
+                    <property name="dataType">string</property>
+                    <property name="position">3</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">accCen</property>
+                    <property name="paramName">accCen</property>
+                    <property name="dataType">string</property>
+                    <property name="position">4</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">HOST_ACC_CD</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">HOST_ACC_CEN</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">TRANS_DT</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">ACC_CEN_CODE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">ACC_CEN_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">DR_AMT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">CR_AMT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">HOST_ACC_CD</property>
+                    <property name="nativeName">HOST_ACC_CD</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">HOST_ACC_CEN</property>
+                    <property name="nativeName">HOST_ACC_CEN</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">TRANS_DT</property>
+                    <property name="nativeName">TRANS_DT</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">ACC_CEN_CODE</property>
+                    <property name="nativeName">ACC_CEN_CODE</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">ACC_CEN_NAME</property>
+                    <property name="nativeName">ACC_CEN_NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">DR_AMT</property>
+                    <property name="nativeName">DR_AMT</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">CR_AMT</property>
+                    <property name="nativeName">CR_AMT</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT c.acc_cen_code host_acc_cd,
+(select acc_cen_code||' '||description from m_acc_Center where acc_cen_code = c.acc_cen_code) host_acc_cen, 
+trunc(trans_dt) trans_dt, b.acc_cen_code, 
+ (select 'INTER REVENUE BRANCH--'||description from m_acc_Center where acc_cen_code = b.acc_cen_code) acc_cen_name,
+ sum(nvl(cr_amt,0)-nvl(dr_amt,0)) dr_amt, sum(0) cr_amt 
+FROM lcc_ledger_dat a, m_coll_center b, m_coll_center c
+WHERE  main_trans_type=? 
+AND trans_dt BETWEEN cmmn1.to_ad(?) AND cmmn1.to_ad(?)
+AND a.cc_cd <> a.host_cc_cd  
+AND c.acc_cen_code= ?
+AND a.cc_cd = b.cc_code
+AND a.host_cc_cd = c.cc_code
+AND b.acc_cen_code <> c.acc_cen_code 
+group by c.acc_cen_code,b.acc_cen_code, trunc(trans_dt)
+order by c.acc_cen_code,b.acc_cen_code, trunc(trans_dt)]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HOST_ACC_CD</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HOST_ACC_CD</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HOST_ACC_CD</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HOST_ACC_CEN</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>56</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HOST_ACC_CEN</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HOST_ACC_CEN</design:label>
+            <design:formattingHints>
+              <design:displaySize>56</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>TRANS_DT</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>0</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>TRANS_DT</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>TRANS_DT</design:label>
+            <design:formattingHints>
+              <design:displaySize>7</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>ACC_CEN_CODE</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>ACC_CEN_CODE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>ACC_CEN_CODE</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>ACC_CEN_NAME</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>72</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>ACC_CEN_NAME</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>ACC_CEN_NAME</design:label>
+            <design:formattingHints>
+              <design:displaySize>72</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DR_AMT</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
+            <design:precision>0</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DR_AMT</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DR_AMT</design:label>
+            <design:formattingHints>
+              <design:displaySize>22</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CR_AMT</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
+            <design:precision>0</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CR_AMT</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CR_AMT</design:label>
+            <design:formattingHints>
+              <design:displaySize>22</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set2" id="1234">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">ACC_CEN_CODE</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">ACC_CEN_CODE</text-property>
+                    <text-property name="heading">ACC_CEN_CODE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DESCRIPTION</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">DESCRIPTION</text-property>
+                    <text-property name="heading">DESCRIPTION</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">REGION_CODE</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">REGION_CODE</text-property>
+                    <text-property name="heading">REGION_CODE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">CREATED_BY</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">CREATED_BY</text-property>
+                    <text-property name="heading">CREATED_BY</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">CREATED_DATE</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">CREATED_DATE</text-property>
+                    <text-property name="heading">CREATED_DATE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">UPDATED_BY</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">UPDATED_BY</text-property>
+                    <text-property name="heading">UPDATED_BY</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">UPDATED_DATE</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">UPDATED_DATE</text-property>
+                    <text-property name="heading">UPDATED_DATE</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">ACC_CEN_CODE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">DESCRIPTION</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">REGION_CODE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">CREATED_BY</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">CREATED_DATE</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">UPDATED_BY</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">UPDATED_DATE</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">ACC_CEN_CODE</property>
+                    <property name="nativeName">ACC_CEN_CODE</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">DESCRIPTION</property>
+                    <property name="nativeName">DESCRIPTION</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">REGION_CODE</property>
+                    <property name="nativeName">REGION_CODE</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">CREATED_BY</property>
+                    <property name="nativeName">CREATED_BY</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">CREATED_DATE</property>
+                    <property name="nativeName">CREATED_DATE</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">UPDATED_BY</property>
+                    <property name="nativeName">UPDATED_BY</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">UPDATED_DATE</property>
+                    <property name="nativeName">UPDATED_DATE</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select * from m_acc_center]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>ACC_CEN_CODE</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>ACC_CEN_CODE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>ACC_CEN_CODE</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DESCRIPTION</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DESCRIPTION</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DESCRIPTION</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>REGION_CODE</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>REGION_CODE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>REGION_CODE</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CREATED_BY</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>20</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CREATED_BY</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CREATED_BY</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CREATED_DATE</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>0</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CREATED_DATE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CREATED_DATE</design:label>
+            <design:formattingHints>
+              <design:displaySize>7</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>UPDATED_BY</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>20</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>UPDATED_BY</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>UPDATED_BY</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>UPDATED_DATE</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>0</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>UPDATED_DATE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>UPDATED_DATE</design:label>
+            <design:formattingHints>
+              <design:displaySize>7</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="CurrentDate" id="549">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">CURRENT_DATE</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">CURRENT_DATE</text-property>
+                    <text-property name="heading">CURRENT_DATE</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">CURRENT_DATE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">CURRENT_DATE</property>
+                    <property name="nativeName">CURRENT_DATE</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select cmmn1.to_bs(sysdate) current_date from dual]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="328">
+            <property name="borderBottomColor">#000000</property>
+            <property name="borderBottomStyle">double</property>
+            <property name="borderBottomWidth">10px</property>
+            <column id="329"/>
+            <column id="362"/>
+            <column id="330"/>
+            <column id="331"/>
+            <column id="369"/>
+            <row id="332">
+                <cell id="333">
+                    <property name="colSpan">5</property>
+                    <property name="rowSpan">1</property>
+                    <label id="344">
+                        <property name="fontSize">12pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">Nepal Telecom </text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="336">
+                <cell id="337">
+                    <property name="colSpan">5</property>
+                    <property name="rowSpan">1</property>
+                    <label id="345">
+                        <property name="fontWeight">bold</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">IBS System</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="340">
+                <cell id="341"/>
+                <cell id="359">
+                    <property name="colSpan">3</property>
+                    <property name="rowSpan">1</property>
+                    <label id="1366">
+                        <property name="fontWeight">bold</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">Collection Made By Other Collection Center</text-property>
+                    </label>
+                </cell>
+                <cell id="366"/>
+            </row>
+            <row id="346">
+                <cell id="347">
+                    <label id="595">
+                        <property name="fontWeight">bold</property>
+                        <text-property name="text">User Id:</text-property>
+                    </label>
+                </cell>
+                <cell id="360">
+                    <data id="758">
+                        <property name="fontWeight">bold</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">userId</property>
+                                <expression name="expression" type="javascript">params["userId"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">userId</property>
+                    </data>
+                </cell>
+                <cell id="348"/>
+                <cell id="349">
+                    <label id="761">
+                        <property name="fontWeight">bold</property>
+                        <property name="textAlign">right</property>
+                        <text-property name="text">Date :</text-property>
+                    </label>
+                </cell>
+                <cell id="367">
+                    <data id="757">
+                        <property name="fontWeight">bold</property>
+                        <property name="dataSet">CurrentDate</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">CURRENT_DATE</property>
+                                <text-property name="displayName">CURRENT_DATE</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["CURRENT_DATE"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">CURRENT_DATE</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="352">
+                <cell id="353"/>
+                <cell id="361"/>
+                <cell id="354"/>
+                <cell id="355"/>
+                <cell id="368"/>
+            </row>
+        </grid>
+        <table id="1281">
+            <property name="dataSet">Data Set1</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">HOST_ACC_CD</property>
+                    <text-property name="displayName">HOST_ACC_CD</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["HOST_ACC_CD"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">HOST_ACC_CEN</property>
+                    <text-property name="displayName">HOST_ACC_CEN</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["HOST_ACC_CEN"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">TRANS_DT</property>
+                    <text-property name="displayName">TRANS_DT</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["TRANS_DT"]</expression>
+                    <property name="dataType">date</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">ACC_CEN_CODE</property>
+                    <text-property name="displayName">ACC_CEN_CODE</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["ACC_CEN_CODE"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">ACC_CEN_NAME</property>
+                    <text-property name="displayName">ACC_CEN_NAME</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["ACC_CEN_NAME"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">DR_AMT</property>
+                    <text-property name="displayName">DR_AMT</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["DR_AMT"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">CR_AMT</property>
+                    <text-property name="displayName">CR_AMT</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["CR_AMT"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation</property>
+                    <text-property name="displayName">sum_deb</text-property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">AVE</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["DR_AMT"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <column id="1320"/>
+            <column id="1321"/>
+            <column id="1322"/>
+            <column id="1323"/>
+            <column id="1324"/>
+            <column id="1325"/>
+            <header>
+                <row id="1343">
+                    <cell id="1344">
+                        <label id="1286">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Host Acc Center:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1345">
+                        <data id="1301">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">HOST_ACC_CEN</property>
+                        </data>
+                    </cell>
+                    <cell id="1346"/>
+                    <cell id="1347"/>
+                    <cell id="1348"/>
+                    <cell id="1349"/>
+                </row>
+                <row id="1282">
+                    <property name="backgroundColor">silver</property>
+                    <cell id="1283">
+                        <label id="1288">
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Trans Date</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1285">
+                        <property name="colSpan">3</property>
+                        <property name="rowSpan">1</property>
+                        <label id="1292">
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Account Center Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1291">
+                        <label id="1294">
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Debit Amt</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1293">
+                        <label id="1296">
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Credit Amt</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="1297">
+                    <property name="borderBottomColor">#000000</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">1px</property>
+                    <property name="borderRightColor">#000000</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">1px</property>
+                    <cell id="1298">
+                        <data id="1303">
+                            <property name="resultSetColumn">TRANS_DT</property>
+                        </data>
+                    </cell>
+                    <cell id="1300">
+                        <property name="colSpan">3</property>
+                        <property name="rowSpan">1</property>
+                        <data id="1307">
+                            <property name="resultSetColumn">ACC_CEN_NAME</property>
+                        </data>
+                    </cell>
+                    <cell id="1306">
+                        <data id="1309">
+                            <structure name="numberFormat">
+                                <property name="category">Currency</property>
+                                <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">DR_AMT</property>
+                        </data>
+                    </cell>
+                    <cell id="1308">
+                        <data id="1311">
+                            <structure name="numberFormat">
+                                <property name="category">Currency</property>
+                                <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">CR_AMT</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1312">
+                    <cell id="1313">
+                        <label id="1363">
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">Debtor</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1314">
+                        <property name="colSpan">2</property>
+                        <property name="rowSpan">1</property>
+                        <data id="1364">
+                            <property name="fontWeight">bold</property>
+                            <property name="resultSetColumn">HOST_ACC_CEN</property>
+                        </data>
+                    </cell>
+                    <cell id="1316"/>
+                    <cell id="1317">
+                        <label id="1362">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">right</property>
+                            <text-property name="text">0</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1318">
+                        <data id="1352">
+                            <property name="fontWeight">bold</property>
+                            <structure name="numberFormat">
+                                <property name="category">Currency</property>
+                                <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">Aggregation</property>
+                        </data>
+                    </cell>
+                </row>
+                <row id="1353">
+                    <cell id="1354">
+                        <label id="1365">
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">Grand Total:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1355"/>
+                    <cell id="1356"/>
+                    <cell id="1357"/>
+                    <cell id="1358">
+                        <data id="1351">
+                            <property name="fontWeight">bold</property>
+                            <structure name="numberFormat">
+                                <property name="category">Currency</property>
+                                <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">Aggregation</property>
+                        </data>
+                    </cell>
+                    <cell id="1359">
+                        <data id="1361">
+                            <property name="fontWeight">bold</property>
+                            <structure name="numberFormat">
+                                <property name="category">Currency</property>
+                                <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">Aggregation</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <grid id="562">
+            <property name="height">0.5833333333333334in</property>
+            <property name="width">7.947916666666667in</property>
+            <column id="563">
+                <property name="width">1.1875in</property>
+            </column>
+            <column id="564">
+                <property name="width">4.114583333333333in</property>
+            </column>
+            <column id="565">
+                <property name="width">2.6458333333333335in</property>
+            </column>
+            <row id="566">
+                <property name="height">0.14583333333333334in</property>
+                <cell id="567"/>
+                <cell id="568"/>
+                <cell id="569"/>
+            </row>
+            <row id="570">
+                <cell id="571">
+                    <label id="572">
+                        <property name="fontWeight">bold</property>
+                        <text-property name="text">Prepared By</text-property>
+                    </label>
+                </cell>
+                <cell id="573">
+                    <data id="548">
+                        <property name="fontWeight">bold</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">userId</property>
+                                <expression name="expression" type="javascript">params["userId"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">userId</property>
+                    </data>
+                </cell>
+                <cell id="574"/>
+            </row>
+            <row id="575">
+                <cell id="576"/>
+                <cell id="577"/>
+                <cell id="578"/>
+            </row>
+        </grid>
+    </body>
+</report>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__fromAcc_392_0</property>
+            <property name="value">1</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__toAcc_393_1</property>
+            <property name="value">999999</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__fromDate_522_2</property>
+            <property name="value">2060/01/01</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__toDate_521_3</property>
+            <property name="value">2070/12/30</property>
+        </structure>
+        <structure>
+            <property name="name">__isnull_391_4</property>
+            <property name="value">collCen_391</property>
+        </structure>
+        <structure>
+            <property name="name">collCen_391_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">__isnull_390_5</property>
+            <property name="value">accCen_390</property>
+        </structure>
+        <structure>
+            <property name="name">accCen_390_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">__isnull_389_6</property>
+            <property name="value">region_389</property>
+        </structure>
+        <structure>
+            <property name="name">region_389_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__userId_744_7</property>
+            <property name="value">USER1</property>
+        </structure>
+        <structure>
+            <property name="name">fromAcc_392_8</property>
+            <property name="value">1</property>
+        </structure>
+        <structure>
+            <property name="name">fromAcc_392_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">fromDate_522_9</property>
+            <property name="value">2060/01/01</property>
+        </structure>
+        <structure>
+            <property name="name">fromDate_522_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">toAcc_393_10</property>
+            <property name="value">999999</property>
+        </structure>
+        <structure>
+            <property name="name">toAcc_393_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">userId_744_11</property>
+            <property name="value">USER1</property>
+        </structure>
+        <structure>
+            <property name="name">userId_744_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">toDate_521_12</property>
+            <property name="value">2070/12/30</property>
+        </structure>
+        <structure>
+            <property name="name">toDate_521_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

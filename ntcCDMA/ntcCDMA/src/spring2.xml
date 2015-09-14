@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+                           
+	<bean id="wsdlInfo" class="com.designco.ntbilling.pojo.WsdlInfo">
+	
+<!--  		<property name="host"><value>http://192.168.200.131/InfoSystem/ws/imsintf_iInfoMgntService?wsdl</value></property>	  -->
+ 		
+ 		<property name="host"><value>http://192.168.201.232:80/InfoSystem/ws/imsintf_iInfoMgntService?wsdl</value></property>
+ 		
+<!-- 		<property name="host"><value>http://172.20.8.101:10106/InfoSystem/ws/imsintf_iInfoMgntService?wsdl</value></property> -->
+	</bean>
+	
+	<bean id="ftpInfo" class="com.designco.ntbilling.pojo.FtpInfo">
+	 <!-- <property name="host"><value>192.168.200.40</value></property>  -->  <!-- old ip for fttp -->
+      	<property name="host"><value>192.168.201.34</value></property>
+		
+		<!-- <property name="username"><value>ntftp</value></property>    -->  <!-- old username for fttp -->
+		<property name="username"><value>ntc</value></property>    
+		
+		<!-- <property name="password"><value>nt@ftp</value></property>    --><!-- old password for fttp -->
+		<property name="password"><value>ntc@123</value></property>   
+	</bean>
+	
+	<bean id="dataSource" class="oracle.ucp.jdbc.PoolDataSourceFactory"
+		factory-method="getPoolDataSource">
+
+		<!--
+			property name="driverClass"> <value>oracle.jdbc.driver.OracleDriver
+			</value> </property
+		-->
+		<property name="URL">
+			<value>
+<!-- 				jdbc:oracle:thin:wpms/wpms@//localhost:1521/orcl -->
+							jdbc:oracle:thin:wpms/wpms123@//172.16.10.203:1521/cbs     
+<!-- 	jdbc:oracle:thin:wpms/wpms123@//172.16.10.203:1521/oltptst -->
+			</value>
+			<!--
+			jdbc:oracle:thin:cbsadmin/cbsadmin@//localhost:1521/XE
+			-->
+		</property>
+		<property name="user" value="wpms" />
+		<property name="password" value="wpms123" />
+<!-- 		<property name="password" value="wpms" /> -->
+		<property name="connectionFactoryClassName" value="oracle.jdbc.pool.OracleDataSource" />
+
+	</bean>
+
+	<!-- bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean> -->
+
+	<!--bean id="dao" class="com.designco.ntcweb.dao.DAO">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean-->
+
+	<bean id="usersDao" class="com.designco.ntbilling.dao.UsersDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="userAllDao" class="com.designco.ntbilling.dao.UserAllImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	
+	<bean id="tempDao" class="com.designco.ntbilling.dao.TempDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="roleDao" class="com.designco.ntbilling.dao.RoleDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="regionDao" class="com.designco.ntbilling.dao.RegionDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="accCenterDao" class="com.designco.ntbilling.dao.AccCenterDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="collCenterDao" class="com.designco.ntbilling.dao.CollCenterDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="itemCategoryDao" class="com.designco.ntbilling.dao.ItemCategoryDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="itemDao" class="com.designco.ntbilling.dao.ItemDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="utilityDao" class="com.designco.ntbilling.dao.UtilityDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="sequenceDao" class="com.designco.ntbilling.dao.SequenceDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="srvDetailDao" class="com.designco.ntbilling.dao.SrvDetailDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="paymentCollectionDao" class="com.designco.ntbilling.dao.PaymentCollectionDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	
+	<bean id="itemRateDao" class="com.designco.ntbilling.dao.ItemRateDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="itemAccMapDao" class="com.designco.ntbilling.dao.ItemAccMapDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="transTypeDao" class="com.designco.ntbilling.dao.TransTypeDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="billingDao" class="com.designco.ntbilling.dao.BillingDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="bankDescDao" class="com.designco.ntbilling.dao.BankDescDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="payCashSaleDetailDao" class="com.designco.ntbilling.dao.PayCashSaleDetailDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="menuAccessDao" class="com.designco.ntbilling.dao.MenuAccessDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	
+	<bean id="depositRefundDao" class="com.designco.ntbilling.dao.DepositRefundDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	
+	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
+		
+</beans>

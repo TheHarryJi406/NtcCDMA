@@ -1,0 +1,98 @@
+
+body {
+	font-size: 13px;
+	font-family: Verdana;
+	color: #275658;
+	text-align: left;
+}
+
+input.small {
+	width:30px;
+}
+
+form input[type=submit]{
+	width:40px;
+}
+
+
+input, select {
+	width:150px;
+	height:28px;
+	color: #275658;
+	background-color: #E9EBF5;
+	border: 1px solid #275658;
+}
+
+ul,li {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 0 10px;
+	line-height: 22px;
+	border-bottom: 1px #999 dashed;
+}
+
+table.xform tr td {
+	padding:3px;
+	font-size:14px;
+}
+
+table.xform tr td input{
+	height:22px;
+	font-size:14px;
+}
+
+table.xform tr td input[type=submit], #addRow, table.xform tr td select {
+	height:28px;
+	width:100px;
+	font-size:14px;
+	padding:5px;
+}
+
+table.color{
+	border-collapse:collapse;
+}
+
+th{
+	text-align: center;
+	background-color: #0000CD;
+	color: #F0F8FF;
+	font-size: 13px;
+}
+
+td {
+	padding: 3px;
+	text-align:left;
+}
+
+table.color tr td {
+	border: 1px solid gray;
+}
+
+a {
+	font-family: Verdana;
+	text-decoration: none;
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+table.xform tr td {
+	padding:3px;
+	font-size:14px;
+}
+
+table.xform tr td input {
+	height:22px;
+	font-size:14px;
+}
+
+table.xform tr td input[type=submit], #addRow {
+	height:28px;
+	width:100px;
+	font-size:14px;
+	padding:5px;
+}
